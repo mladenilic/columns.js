@@ -1,0 +1,23 @@
+{
+  "name": "columns.js",
+  "version": "1.0.0",
+  "description": "Lightweight masonry grid js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mladenilic/columns.js.git"
+  },
+  "keywords": [
+    "masonry",
+    "grid",
+    "columns"
+  ],
+  "author": "Mladen Ilic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mladenilic/columns.js/issues"
+  },
+  "homepage": "https://github.com/mladenilic/columns.js#readme"
+}
