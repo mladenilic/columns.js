@@ -5,17 +5,23 @@ export default class {
 
         this.options.breakpoints = this.options.breakpoints || {};
 
+        this.items = Array.from(container.children) || [];
+
         this.reset();
     }
 
-    initColumns () {
+    initColumns() {
         let columnCount = this.columnCount();
 
         this.container.dataset.columns = columnCount;
         this.container.innerHTML = '<div class="column-js"></div>'.repeat(columnCount);
+
+        this.items.forEach((element) => {
+            this.container.children[this.count++ % columnCount].append(element);
+        });
     }
 
-    columnCount () {
+    columnCount() {
         let columnCount = this.options.columns;
         let windowWidth = window.innerWidth;
 
@@ -30,13 +36,14 @@ export default class {
         return columnCount;
     }
 
-    append (element) {
+    append(element) {
+        this.items.push(element);
         this.container.children[this.count++ % this.columnCount()].append(element);
 
         return this;
     }
 
-    reset () {
+    reset() {
         this.count = 0;
         this.initColumns();
 
