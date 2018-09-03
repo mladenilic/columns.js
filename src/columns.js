@@ -9,7 +9,10 @@ export default class {
     }
 
     initColumns () {
-        this.container.innerHTML = '<div class="column-js" style="flex-basis"></div>'.repeat(this.columnCount());
+        let columnCount = this.columnCount();
+
+        this.container.dataset.columns = columnCount;
+        this.container.innerHTML = '<div class="column-js"></div>'.repeat(columnCount);
     }
 
     columnCount () {
