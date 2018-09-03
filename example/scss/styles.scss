@@ -17,6 +17,8 @@ img {
 #columns-wrapper {
     display: flex;
     flex-wrap: wrap;
+    max-width: 960px;
+    margin: 0 auto;
 
     &[data-columns="3"] {
 
@@ -24,4 +26,8 @@ img {
             flex-basis: calc(100% / 3);
         }
     }
+}
+
+.grid-item {
+    padding: 10px;
 }

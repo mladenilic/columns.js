@@ -13,6 +13,7 @@ let grid = new Columns(wrapper, {
 document.getElementById('append').addEventListener('click', function () {
     for (let i = 0; i < 10; i++) {
         let element = document.createElement('div');
+        element.classList.add('grid-item');
 
         element.innerHTML = `<img src="https://picsum.photos/${rand(300, 400)}/${rand(300, 400)}/?random">`;
 
