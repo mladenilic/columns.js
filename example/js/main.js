@@ -1,4 +1,7 @@
-import Columns from '/src/columns.js';
+// require('../scss/styles.scss');
+
+import scss from '../scss/styles.scss';
+import Columns from '../../src/columns.js';
 
 let rand = (min, max) => {
   return min + Math.floor(Math.random() * Math.floor(max));
@@ -18,5 +21,3 @@ document.getElementById('append').addEventListener('click', function () {
         grid.append(element);
     }
 });
-
-console.log(grid);

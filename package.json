@@ -22,13 +22,17 @@
   },
   "homepage": "https://github.com/mladenilic/columns.js#readme",
   "devDependencies": {
+    "css-loader": "^1.0.0",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.17.1",
     "webpack-dev-server": "^3.1.7"
   },
   "dependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "babel-loader": "^8.0.0",
-    "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0"
   }
 }
