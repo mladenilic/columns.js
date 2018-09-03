@@ -1,5 +1,3 @@
-// require('../scss/styles.scss');
-
 import scss from '../scss/styles.scss';
 import Columns from '../../src/columns.js';
 
@@ -13,10 +11,10 @@ let grid = new Columns(wrapper, {
 });
 
 document.getElementById('append').addEventListener('click', function () {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
         let element = document.createElement('div');
 
-        element.innerHTML = `<img src="https://picsum.photos/${rand(200, 400)}/${50, 600}/?random">`;
+        element.innerHTML = `<img src="https://picsum.photos/${rand(300, 400)}/${rand(300, 400)}/?random">`;
 
         grid.append(element);
     }
