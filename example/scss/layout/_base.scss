@@ -1,0 +1,23 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    color: $dark-gray;
+    background-color: $light-gray;
+    font-family: Arial, sans-serif;
+}
+
+img {
+    width: 100%;
+}
+
+.wrapper {
+    max-width: 960px;
+    margin: 0 auto 50px;
+}

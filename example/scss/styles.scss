@@ -1,24 +1,10 @@
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    margin: 0;
-    padding: 0;
-}
-
-img {
-    width: 100%;
-}
+@import 'base/variables';
+@import 'layout/base';
+@import 'components/buttons';
 
 #columns-wrapper {
     display: flex;
     flex-wrap: wrap;
-    max-width: 960px;
-    margin: 0 auto;
 
     &[data-columns="3"] {
 
@@ -29,5 +15,5 @@ img {
 }
 
 .grid-item {
-    padding: 10px;
+    padding: 5px;
 }
