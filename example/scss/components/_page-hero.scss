@@ -7,9 +7,26 @@
     justify-content: center;
 
     .page-title {
+        position: relative;
         color: $primary-color;
         font-size: 3.2em;
         margin-top: 0;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            height: 4px;
+            width: 100px;
+            background: $dark-gray;
+        }
+
+        &::after {
+            width: 80px;
+            bottom: -2px;
+        }
 
         span {
             color: $dark-gray;
