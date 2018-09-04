@@ -1,0 +1,55 @@
+.hero {
+    max-width: 650px;
+    min-width: 320px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .page-title {
+        position: relative;
+        color: $primary-color;
+        font-size: 3.2em;
+        margin-top: 0;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            height: 4px;
+            width: 100px;
+            background: $dark-gray;
+        }
+
+        &::after {
+            width: 80px;
+            bottom: -2px;
+        }
+
+        span {
+            color: $dark-gray;
+            font-size: 0.5em;
+        }
+    }
+
+    .page-subtitle {
+        font-size: 2em;
+
+        p {
+            margin-top: 0;
+        }
+    }
+
+    .menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: inline-block;
+            padding: 10px 20px 10px 0;
+        }
+    }
+}

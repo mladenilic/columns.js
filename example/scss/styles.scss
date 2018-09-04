@@ -1,7 +1,9 @@
 @import 'base/variables';
 @import 'layout/base';
 @import 'components/buttons';
-@import 'components/page-hero';
+
+@import 'sections/hero';
+@import 'sections/pros';
 
 #columns-wrapper {
     display: flex;
