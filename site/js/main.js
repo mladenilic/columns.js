@@ -1,10 +1,9 @@
 import scss from '../scss/styles.scss';
-import Columns from '../../src/columns.js';
+import Columns from './columns.js';
 
 let rand = (min, max) => {
   return min + Math.floor(Math.random() * Math.floor(max));
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
     let wrapper = document.getElementById('columns-wrapper');

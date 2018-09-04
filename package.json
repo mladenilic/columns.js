@@ -23,6 +23,7 @@
   "homepage": "https://github.com/mladenilic/columns.js#readme",
   "devDependencies": {
     "autoprefixer": "^9.1.3",
+    "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
     "node-sass": "^4.9.3",
     "postcss-loader": "^3.0.0",
