@@ -21,9 +21,8 @@ const debounce = (callback, wait) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     let breakpoints = {
-        480: 2,
-        840: 3,
-        1024: 4,
+        480: 3,
+        840: 4,
     };
     let wrapper = document.getElementById('columns-wrapper');
     let grid = new Columns(wrapper, {
@@ -31,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('responsive-toggle').addEventListener('change', (e) => {
-        grid.setColumns(e.target.checked ? 1 : 3);
+        grid.setColumns(e.target.checked ? 2 : 3);
         grid.setBreakpoints(e.target.checked ? breakpoints : false);
         grid.update();
     });
