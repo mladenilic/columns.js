@@ -1,5 +1,5 @@
 # columns.js
-A minimalist masonry layout written in vanila JS, with **no** dependancies. 
+A minimalist masonry layout written in vanila JS, with **no** dependancies.
 
 *columns.js* creates a masonry grid by sorting elements into columns and wrapping each column with a div element.
 
@@ -38,12 +38,15 @@ grid.append(item);
 {
   // Default number of columns (mandatory)
   columns: 1,
-  
+
   // Responsive support
   breakpoints: {
     768: 2,
     1200: 3
-  }
+  },
+
+  // Class added to column wrapper
+  column_class: 'column-js'
 }
 ```
 
@@ -78,7 +81,7 @@ If you are usig Sass, here's a handy mixin:
 @mixin columnsjs {
     display: flex;
     flex-wrap: wrap;
-    
+
     @for $i from 1 through 9 {
         &[data-columns="#{$i}"] {
 
