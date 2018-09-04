@@ -106,3 +106,4 @@ If you are usig Sass, here's a handy mixin:
 ### To Do
 
 1. Implement column height optimization – currently *columns.js* prioratizes chronological orders, which can lead to the uneven height of grid columns, when item height varies too much.
+2. Implement removing element from grid
