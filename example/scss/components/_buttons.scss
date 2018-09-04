@@ -1,11 +1,9 @@
 #append {
     appearance: none;
-    padding: 10px 45px;
     font-size: 1em;
-    border: 2px solid $primary-color;
-    color: $primary-color;
+    border: none;
     display: block;
-    margin: auto;
     outline: none;
     cursor: pointer;
+    text-decoration: underline;
 }
