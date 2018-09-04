@@ -41,8 +41,8 @@ grid.append(item);
 
   // Responsive support
   breakpoints: {
-    768: 2,
-    1200: 3
+      480: 2,
+      840: 3
   },
 
   // Class added to column wrapper
@@ -54,6 +54,12 @@ grid.append(item);
 ```js
 grid.columnCount(); // Get current number of columns
 grid.append(element); // Append new html element
+grid.update(); // Re-flow the grid
+
+// Option setters
+grid.setBreakpoints(breakpoints)
+grid.setColumns(columns)
+grid.setColumnClass(columnClass)
 ```
 
 ### Styling
