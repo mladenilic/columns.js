@@ -4,6 +4,7 @@ export default class {
         this.options = options;
 
         this.options.breakpoints = this.options.breakpoints || {};
+        this.options.column_class = this.options.column_class || 'column-js';
 
         this.items = Array.from(container.children) || [];
 
@@ -14,7 +15,7 @@ export default class {
         let columnCount = this.columnCount();
 
         this.container.dataset.columns = columnCount;
-        this.container.innerHTML = '<div class="column-js"></div>'.repeat(columnCount);
+        this.container.innerHTML = `<div class="${this.options.column_class}"></div>`.repeat(columnCount);
 
         this.items.forEach((element) => {
             this.container.children[this.count++ % columnCount].append(element);
