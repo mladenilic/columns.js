@@ -1,5 +1,4 @@
 const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     entry: require.resolve('./site/js/main.js'),
@@ -20,11 +19,5 @@ module.exports = {
                 use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
             }
         ]
-    },
-    plugins: [
-        new CopyWebpackPlugin([{
-            from: 'src/columns.js',
-            to: '../js/columns.js'
-        }])
-    ]
+    }
 };
