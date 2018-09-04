@@ -1,5 +1,5 @@
 # columns.js
-A minimalist masonry layout written in vanila JS, with **no** dependancies.
+A minimalist masonry layout written in vanila JS, with **no** dependencies.
 
 *columns.js* creates a masonry grid by sorting elements into columns and wrapping each column with a div element.
 
@@ -10,14 +10,14 @@ A minimalist masonry layout written in vanila JS, with **no** dependancies.
 ### Pros
 
 * Blazing fast, vanila js
-* Written as ES6 module, no dependancies
+* Written as ES6 module, no dependencies
 * No inline styles, no absolute positioning, no transforms
 * Responsive support, minimal configuration
 * Maintains chronological order
 
 ### Dependencies
 
-No dependacies! Written in plain javascript.
+No dependencies! Written in plain javascript.
 
 ### Example
 ```js
