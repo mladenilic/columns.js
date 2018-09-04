@@ -5,17 +5,23 @@
 @import 'sections/hero';
 @import 'sections/pros';
 
-#columns-wrapper {
+@mixin columnsjs {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -5px 50px;
 
-    &[data-columns="3"] {
+    @for $i from 1 through 9 {
+        &[data-columns="#{$i}"] {
 
-        & > div {
-            flex-basis: calc(100% / 3);
+            & > div {
+                flex-basis: calc(100% / #{$i});
+            }
         }
     }
+}
+
+#columns-wrapper {
+    margin: 0 -5px 50px;
+    @include columnsjs;
 }
 
 .grid-item {
