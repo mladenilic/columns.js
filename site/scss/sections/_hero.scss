@@ -15,7 +15,7 @@
         &::after {
             content: '';
             position: absolute;
-            bottom: 5px;
+            bottom: 0;
             left: 0;
             height: 4px;
             width: 100px;
@@ -24,7 +24,7 @@
 
         &::after {
             width: 80px;
-            bottom: -2px;
+            bottom: -7px;
         }
 
         span {
@@ -35,10 +35,7 @@
 
     .page-subtitle {
         font-size: 2em;
-
-        p {
-            margin-top: 0;
-        }
+        margin: 0 0 1.5em;
     }
 
     .menu {
