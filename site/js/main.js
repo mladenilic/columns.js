@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let element = document.createElement('div');
             element.classList.add('grid-item');
 
-            element.innerHTML = `<img src="images/${rand(1, 45)}.jpg">`;
+            element.innerHTML = `<img src="images/${rand(1, 41)}.jpg">`;
 
             grid.append(element);
         }
