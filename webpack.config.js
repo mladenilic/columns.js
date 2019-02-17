@@ -7,7 +7,9 @@ module.exports = [{
     output: {
         path: path.resolve(__dirname, './'),
         filename: 'dist/columns.min.js',
-        library: 'Columns'
+        library: 'Columns',
+        libraryExport: 'default',
+        libraryTarget: 'umd'
     },
     module: {
         rules: [
