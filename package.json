@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Lightweight masonry grid js",
   "scripts": {
+    "build": "webpack",
     "start:dev": "webpack-dev-server --inline --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
