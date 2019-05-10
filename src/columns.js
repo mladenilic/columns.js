@@ -1,4 +1,4 @@
-export default class {
+class Columns {
     constructor(container, options = {}) {
         this.container = container;
         this.options = options;
@@ -59,3 +59,5 @@ export default class {
         this.options.column_class = columnClass;
     }
 }
+
+export default Columns;
