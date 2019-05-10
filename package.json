@@ -1,6 +1,6 @@
 {
   "name": "columns.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight masonry grid js",
   "scripts": {
     "build": "webpack",
@@ -23,17 +23,17 @@
   },
   "homepage": "https://columnsjs.com/",
   "devDependencies": {
-    "@babel/core": "^7.3.3",
-    "@babel/preset-env": "^7.3.1",
-    "autoprefixer": "^9.1.3",
-    "babel-loader": "^8.0.0",
-    "css-loader": "^1.0.0",
-    "node-sass": "^4.12.0",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "autoprefixer": "^9.5.1",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^1.0.1",
+    "dart-sass": "^1.20.1",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.0",
-    "webpack": "^4.17.1",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.14"
+    "style-loader": "^0.23.1",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.3.1"
   }
 }

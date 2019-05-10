@@ -19,7 +19,17 @@ module.exports = [{
             },
             {
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+                use: [
+                    { loader: 'style-loader' },
+                    { loader: 'css-loader' },
+                    { loader: 'postcss-loader' },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            implementation: require('dart-sass')
+                        }
+                    }
+                ]
             }
         ]
     }
@@ -40,7 +50,17 @@ module.exports = [{
             },
             {
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+                use: [
+                    { loader: 'style-loader' },
+                    { loader: 'css-loader' },
+                    { loader: 'postcss-loader' },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            implementation: require('dart-sass')
+                        }
+                    }
+                ]
             }
         ]
     }
