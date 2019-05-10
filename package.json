@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/mladenilic/columns.js/issues"
   },
-  "homepage": "https://github.com/mladenilic/columns.js#readme",
+  "homepage": "https://columnsjs.com/",
   "devDependencies": {
     "@babel/core": "^7.3.3",
     "@babel/preset-env": "^7.3.1",
