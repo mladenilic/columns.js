@@ -83,7 +83,7 @@ Instead, *columns.js* maintains `columns` data attribute on the wrapper element 
 ```
 
 If you are usig Sass, here's a handy mixin:
-```sass
+```scss
 @mixin columnsjs {
     display: flex;
     flex-wrap: wrap;
