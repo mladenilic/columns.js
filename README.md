@@ -19,35 +19,75 @@ A minimalist masonry layout written in vanilla JS, with **no** dependencies.
 
 No dependencies! Written in plain javascript.
 
-### Example
-```js
-import Columns from './columns.js';
+### Install
 
-let grid = new Columns(document.getElementById('grid-wrapper'), {
+```
+$ npm install columns.js
+```
+
+or 
+
+```
+yarn add columns.js
+```
+
+### Example
+
+Following example demonstrates creating masonry grid with 3 columns: 
+```js
+import Columns from 'columns.js';
+
+let grid = new Columns(document.getElementById('columns'), {
     columns: 3
 });
+```
 
-let item = document.createElement('div');
-item.innerHTML = '<img src="https://picsum.photos/400/200/?random">';
+```html
+<div id="columns">
+  <img src="https://picsum.photos/400/200/?random">
+  <img src="https://picsum.photos/300/500/?random">
+  ...
+</div>
+```
+
+Dynamically append elements to the grid:
+```js
+let item = new Image();
+item.src = 'https://picsum.photos/400/200/?random';
 
 grid.append(item);
 ```
 
 ### Options
 ```js
-{
-  // Default number of columns (mandatory)
+new Columns(document.getElementById('columns'), {
+ /**
+  * Number of columns (Mandatory)
+  */
   columns: 1,
 
-  // Responsive support
+ /**
+  * Responsive settings (Optional)
+  * 
+  * Each key represents a screen size and each value
+  * is corresponding number of columns
+  * 
+  * Example:
+  * < 480px             -> 1 column
+  * > 480px and < 839px -> 3 columns
+  * > 840px             -> 4 columns
+  */
   breakpoints: {
-      480: 2,
-      840: 3
+      480: 3,
+      840: 4
   },
 
-  // Class added to column wrapper
+ /**
+  * Html class added to grid column elements
+  */
   column_class: 'column-js'
-}
+});
+
 ```
 
 ### Methods
@@ -63,12 +103,12 @@ grid.setColumnClass(columnClass)
 ```
 
 ### Styling
-*columns.js* does not apply any inline styles. No absolute positioning. No transforamations.
+*columns.js* does not apply any inline styles. No absolute positioning. No transformations.
 
 Instead, *columns.js* maintains `columns` data attribute on the wrapper element with a current column count value, which can be used for styling:
 
 ```css
-#grid-wrapper {
+#columns {
     display: flex;
     flex-wrap: wrap;
 }
@@ -82,7 +122,7 @@ Instead, *columns.js* maintains `columns` data attribute on the wrapper element 
 }
 ```
 
-If you are usig Sass, here's a handy mixin:
+Here's a handy mixin:
 ```scss
 @mixin columnsjs {
     display: flex;
@@ -91,20 +131,20 @@ If you are usig Sass, here's a handy mixin:
     @for $i from 1 through 9 {
         &[data-columns="#{$i}"] {
 
-            & > div {
+            & > * {
                 flex-basis: calc(100% / #{$i});
             }
         }
     }
 }
 
-#columns-wrapper {
+#columns {
     @include columnsjs;
 }
 ```
 
 ### To Do
 
-1. Implement column height optimization – currently *columns.js* prioratizes chronological orders, which can lead to the uneven height of grid columns, when item height varies too much.
-2. Implement removing element from grid
+1. Implement column height optimization – currently *columns.js* prioritizes chronological orders, which can lead to the uneven height of grid columns, when item height varies too much.
+2. Implement removing an element from the grid
 3. Add event system
