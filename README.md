@@ -1,7 +1,7 @@
 # columns.js
-A minimalist masonry layout written in vanilla JS, with **no** dependencies.
+A minimalist masonry layout is written in vanilla JS, with **no** dependencies.
 
-*columns.js* creates a masonry grid by sorting elements into columns and wrapping each column with a div element.
+*columns.js* creates a masonry grid by wrapping each column of items in an element. Masonry grid is then created without the need for absolute positioning nor css transforms.
 
 ### Demo
 
@@ -83,7 +83,7 @@ new Columns(document.getElementById('columns'), {
   },
 
  /**
-  * Html class added to grid column elements
+  * Html class added to grid column elements (Optional)
   */
   column_class: 'column-js'
 });
@@ -113,11 +113,11 @@ Instead, *columns.js* maintains `columns` data attribute on the wrapper element 
     flex-wrap: wrap;
 }
 
-[data-columns="3"] > div {
+[data-columns="3"] > * {
   flex-basis: calc(100% / 3);
 }
 
-[data-columns="4"] > div {
+[data-columns="4"] > * {
   flex-basis: calc(100% / 4);
 }
 ```
