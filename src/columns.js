@@ -15,12 +15,12 @@ export default class Columns {
       let columnCount = this.options.columns;
       let windowWidth = window.innerWidth;
 
-      Object.keys(this.options.breakpoints).some((breakpoint) => {
+      Object.entries(this.options.breakpoints).some(([breakpoint, count]) => {
         if (windowWidth < breakpoint) {
           return true;
         }
 
-        columnCount = this.options.breakpoints[breakpoint];
+        columnCount = count;
       });
 
       return columnCount;
