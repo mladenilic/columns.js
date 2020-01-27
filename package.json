@@ -4,7 +4,7 @@
   "description": "Lightweight masonry grid js",
   "scripts": {
     "build": "rm -rf lib/ && babel src -d lib",
-    "test": "mocha --require @babel/register --require test/setup.js test/**/*.test.js"
+    "test": "nyc mocha --require @babel/register --require test/setup.js test/**/*.test.js"
   },
   "main": "lib/columns.js",
   "files": [
@@ -33,6 +33,7 @@
     "@babel/register": "^7.8.3",
     "chai": "^4.2.0",
     "jsdom": "^16.0.1",
-    "mocha": "^7.0.1"
+    "mocha": "^7.0.1",
+    "nyc": "^15.0.0"
   }
 }
