@@ -23,21 +23,21 @@ describe('Columns js', function () {
 
       it('returns correct number of columns', function () {
         window.innerWidth = 319;
-        expect(this.columns.columnCount()).to.be.equal(3);
+        expect(this.columns.count()).to.be.equal(3);
 
         window.innerWidth = 320;
-        expect(this.columns.columnCount()).to.be.equal(4);
+        expect(this.columns.count()).to.be.equal(4);
 
         window.innerWidth = 599;
-        expect(this.columns.columnCount()).to.be.equal(4);
+        expect(this.columns.count()).to.be.equal(4);
 
         window.innerWidth = 600;
-        expect(this.columns.columnCount()).to.be.equal(5);
+        expect(this.columns.count()).to.be.equal(5);
       });
     });
 
     it('returns correct number of columns', function () {
-      expect(this.columns.columnCount()).to.be.equal(3);
+      expect(this.columns.count()).to.be.equal(3);
     });
   });
 });

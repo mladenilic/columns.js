@@ -7,11 +7,12 @@ export default class Columns {
       this.options.column_class = this.options.column_class || 'column-js';
 
       this.items = Array.from(container.children) || [];
+      this.index = 0;
 
-      this.update();
+      this.render();
     }
 
-    columnCount() {
+    count() {
       let columnCount = this.options.columns;
       let windowWidth = window.innerWidth;
 
@@ -28,34 +29,26 @@ export default class Columns {
 
     append(element) {
       this.items.push(element);
-      this.container.children[this.count++ % this.columnCount()].append(element);
+      this.container.children[this.index++ % this.count()].append(element);
 
       return this;
     }
 
-    update() {
-      this.count = 0;
-      let columnCount = this.columnCount();
+    render() {
+      this.index = 0;
+      const count = this.count();
 
-      this.container.dataset.columns = columnCount;
-      this.container.innerHTML = `<div class="${this.options.column_class}"></div>`.repeat(columnCount);
+      this.container.dataset.columns = count;
+      this.container.innerHTML = `<div class="${this.options.column_class}"></div>`.repeat(count);
 
       this.items.forEach((element) => {
-        this.container.children[this.count++ % columnCount].append(element);
+        this.container.children[this.index++ % count].append(element);
       });
 
       return this;
     }
 
-    setBreakpoints(breakpoints = {}) {
-      this.options.breakpoints = breakpoints || {};
-    }
-
-    setColumns(columns) {
-      this.options.columns = columns;
-    }
-
-    setColumnClass(columnClass) {
-      this.options.column_class = columnClass;
+    setOptions(options = {}) {
+      this.options = Object.assign(this.options, options);
     }
 }
