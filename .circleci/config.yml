@@ -26,4 +26,4 @@ jobs:
 
       - run: npm test
 
-      - run: ./cc-test-reporter after-build --coverage-input-type icov --exit-code $?
+      - run: ./cc-test-reporter after-build --coverage-input-type lcov --exit-code $?
