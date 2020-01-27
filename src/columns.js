@@ -1,54 +1,55 @@
+import Chronological from './partition/chronological';
+
 export default class Columns {
-    constructor(container, options = {}) {
-      this.container = container;
-      this.options = options;
+  constructor(container, options = {}) {
+    this.container = container;
+    this.options = options;
 
-      this.options.breakpoints = this.options.breakpoints || {};
-      this.options.column_class = this.options.column_class || 'column-js';
+    this.options.breakpoints = this.options.breakpoints || {};
+    this.options.column_class = this.options.column_class || 'column-js';
 
-      this.items = Array.from(container.children) || [];
-      this.index = 0;
+    this.items = Array.from(this.container.children) || [];
+    this.algorithm = new Chronological(Array.from(container.children) || []);
 
-      this.render();
-    }
+    this.render();
+  }
 
-    count() {
-      let columnCount = this.options.columns;
-      let windowWidth = window.innerWidth;
+  count() {
+    let columnCount = this.options.columns;
+    let windowWidth = window.innerWidth;
 
-      Object.entries(this.options.breakpoints).some(([breakpoint, count]) => {
-        if (windowWidth < breakpoint) {
-          return true;
-        }
+    Object.entries(this.options.breakpoints).some(([breakpoint, count]) => {
+      if (windowWidth < breakpoint) {
+        return true;
+      }
 
-        columnCount = count;
-      });
+      columnCount = count;
+    });
 
-      return columnCount;
-    }
+    return columnCount;
+  }
 
-    append(element) {
-      this.items.push(element);
-      this.container.children[this.index++ % this.count()].append(element);
+  append(element) {
+    this.algorithm.append(element);
+    this.container.children[this.algorithm.lastIndex].append(element);
 
-      return this;
-    }
+    return this;
+  }
 
-    render() {
-      this.index = 0;
-      const count = this.count();
+  render() {
+    const count = this.count();
+    this.container.dataset.columns = count;
+    this.container.innerHTML = `<div class="${this.options.column_class}"></div>`.repeat(count);
 
-      this.container.dataset.columns = count;
-      this.container.innerHTML = `<div class="${this.options.column_class}"></div>`.repeat(count);
+    this.algorithm.partition(this.items, count);
+    this.algorithm.columns.forEach((column, index) => {
+      column.forEach(element => this.container.children[index].append(element));
+    });
 
-      this.items.forEach((element) => {
-        this.container.children[this.index++ % count].append(element);
-      });
+    return this;
+  }
 
-      return this;
-    }
-
-    setOptions(options = {}) {
-      this.options = Object.assign(this.options, options);
-    }
+  setOptions(options = {}) {
+    this.options = Object.assign(this.options, options);
+  }
 }
