@@ -1,5 +1,6 @@
 # columns.js
 
+![npm](https://img.shields.io/npm/v/columns.js)
 [![CircleCI](https://circleci.com/gh/mladenilic/columns.js.svg?style=svg)](https://circleci.com/gh/mladenilic/columns.js)
 [![Maintainability](https://api.codeclimate.com/v1/badges/bfd6aa1fac5d281bf4a5/maintainability)](https://codeclimate.com/github/mladenilic/columns.js/maintainability)
 
