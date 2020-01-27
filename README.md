@@ -1,4 +1,7 @@
 # columns.js
+
+[![CircleCI](https://circleci.com/gh/mladenilic/columns.js.svg?style=svg)](https://circleci.com/gh/mladenilic/columns.js)
+
 A minimalist masonry layout is written in vanilla JS, with **no** dependencies.
 
 *columns.js* creates a masonry grid by wrapping each column of items in an element. Masonry grid is then created without the need for absolute positioning nor css transforms.
