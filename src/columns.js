@@ -3,10 +3,11 @@ import Chronological from './partition/chronological';
 export default class Columns {
   constructor(container, options = {}) {
     this.container = container;
-    this.options = options;
-
-    this.options.breakpoints = this.options.breakpoints || {};
-    this.options.column_class = this.options.column_class || 'column-js';
+    this.options = Object.assign({
+      columns: 1,
+      breakpoints: null,
+      column_class: 'column-js'
+    }, options);
 
     this.items = Array.from(this.container.children) || [];
     this.algorithm = new Chronological(Array.from(container.children) || []);
@@ -18,7 +19,7 @@ export default class Columns {
     let columnCount = this.options.columns;
     let windowWidth = window.innerWidth;
 
-    Object.entries(this.options.breakpoints).some(([breakpoint, count]) => {
+    Object.entries(this.options.breakpoints || {}).some(([breakpoint, count]) => {
       if (windowWidth < breakpoint) {
         return true;
       }
