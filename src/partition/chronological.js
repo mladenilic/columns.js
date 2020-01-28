@@ -1,5 +1,5 @@
 export default class Chronological {
-  constructor(set) {
+  constructor(set = []) {
     this.set = set;
     this.sets = null;
   }
