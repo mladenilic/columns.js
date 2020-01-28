@@ -10,7 +10,7 @@ export default class Columns {
     }, options);
 
     this.items = Array.from(this.container.children) || [];
-    this.algorithm = new Chronological(Array.from(container.children) || []);
+    this.algorithm = new Chronological();
 
     this.render();
   }
@@ -31,8 +31,8 @@ export default class Columns {
   }
 
   append(element) {
-    this.algorithm.append(element);
-    this.container.children[this.algorithm.lastIndex].append(element);
+    const column = this.algorithm.append(element);
+    this.container.children[column].append(element);
 
     return this;
   }

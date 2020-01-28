@@ -2,26 +2,26 @@ export default class Chronological {
   constructor() {
     this.columns = [];
     this.columnCount = 1;
-
-    this.lastIndex = 0;
   }
 
   partition(items, columnCount) {
-    this.columns = [];
     this.columnCount = columnCount;
+    this.columns = [...Array(this.columnCount)].map(_ => []);
+    if (this.columnCount <= 0) {
+      return;
+    }
 
     items.forEach((item, index) => {
-      this.lastIndex = index % this.columnCount;
-
-      this.columns[this.lastIndex] = this.columns[this.lastIndex] || [];
-      this.columns[this.lastIndex].push(item);
+      this.columns[index % this.columnCount].push(item);
     });
   }
 
   append(item) {
     const length = this.columns.reduce((acc, cur) => acc + cur.length, 0);
+    const column = length % this.columnCount;
 
-    this.lastIndex = length % this.columnCount;
-    this.columns[this.lastIndex].push(item);
+    this.columns[column].push(item);
+
+    return column;
   }
 }
