@@ -1,20 +1,27 @@
 export default class Chronological {
-  constructor() {
-    this.sets = [];
+  constructor(set) {
+    this.set = set;
+    this.sets = null;
   }
 
-  partition(items, setCount) {
-    this.sets = [...Array(setCount)].map(_ => []);
-    if (setCount <= 0) {
-      return;
+  partition(count) {
+    this.sets = [...Array(count)].map(_ => []);
+
+    if (count > 0) {
+      this.set.forEach((item, index) => {
+        this.sets[index % count].push(item);
+      });
     }
 
-    items.forEach((item, index) => {
-      this.sets[index % setCount].push(item);
-    });
+    return this.sets;
   }
 
   append(item) {
+    this.set.push(item);
+    if (this.sets === null) {
+      return null;
+    }
+
     const length = this.sets.reduce((acc, cur) => acc + cur.length, 0);
     const set = length % this.sets.length;
 

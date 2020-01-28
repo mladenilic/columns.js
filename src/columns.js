@@ -9,8 +9,7 @@ export default class Columns {
       column_class: 'column-js'
     }, options);
 
-    this.items = Array.from(this.container.children) || [];
-    this.algorithm = new Chronological();
+    this.algorithm = new Chronological(Array.from(this.container.children) || []);
 
     this.render();
   }
@@ -42,8 +41,7 @@ export default class Columns {
     this.container.dataset.columns = count;
     this.container.innerHTML = `<div class="${this.options.column_class}"></div>`.repeat(count);
 
-    this.algorithm.partition(this.items, count);
-    this.algorithm.sets.forEach((column, index) => {
+    this.algorithm.partition(count).forEach((column, index) => {
       column.forEach(element => this.container.children[index].append(element));
     });
 
