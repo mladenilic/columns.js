@@ -1,0 +1,5 @@
+{
+  "slow": 20,
+  "require": ["@babel/register", "./test/setup.js"],
+  "colors": false
+}

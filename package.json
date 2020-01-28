@@ -4,7 +4,7 @@
   "description": "Lightweight masonry grid js",
   "scripts": {
     "build": "rm -rf lib/ && babel src -d lib",
-    "test": "nyc --reporter=lcov mocha --require @babel/register --require test/setup.js test/**/*.test.js"
+    "test": "nyc --reporter=lcov mocha test/**/*.test.js"
   },
   "main": "lib/columns.js",
   "files": [
