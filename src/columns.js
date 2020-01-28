@@ -43,7 +43,7 @@ export default class Columns {
     this.container.innerHTML = `<div class="${this.options.column_class}"></div>`.repeat(count);
 
     this.algorithm.partition(this.items, count);
-    this.algorithm.columns.forEach((column, index) => {
+    this.algorithm.sets.forEach((column, index) => {
       column.forEach(element => this.container.children[index].append(element));
     });
 
