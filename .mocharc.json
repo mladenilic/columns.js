@@ -1,5 +1,6 @@
 {
   "slow": 20,
+  "recursive": true,
   "require": ["@babel/register", "./test/setup.js"],
   "colors": false
 }
