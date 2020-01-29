@@ -38,17 +38,32 @@ export default class Columns {
 
   render() {
     const count = this.count();
-    this.container.dataset.columns = count;
-    this.container.innerHTML = `<div class="${this.options.column_class}"></div>`.repeat(count);
+    const columns = this._prepareColumns(count);
 
-    this.algorithm.partition(count).forEach((column, index) => {
-      column.forEach(element => this.container.children[index].append(element));
-    });
+    this.algorithm.partition(count).forEach((c, i) => columns[i].append(...c));
+
+    this.container.dataset.columns = count;
+    while (this.container.firstChild) {
+      this.container.removeChild(this.container.firstChild);
+    }
+    this.container.append(...columns);
 
     return this;
   }
 
   setOptions(options = {}) {
     this.options = Object.assign(this.options, options);
+  }
+
+  _prepareColumns(count) {
+    const columns = [];
+    [...Array(count)].forEach(() => {
+      const column = document.createElement('div');
+      column.classList.add(this.options.column_class);
+
+      columns.push(column);
+    });
+
+    return columns;
   }
 }
