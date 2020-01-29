@@ -14,7 +14,8 @@ describe('Columns', function () {
         document.body.append(this.container);
 
         this.columns = new Columns(this.container, {
-          columns: 2
+          columns: 2,
+          algorithm: 'chronological'
         });
       });
 
@@ -38,7 +39,8 @@ describe('Columns', function () {
         document.body.append(this.container);
 
         this.columns = new Columns(this.container, {
-          columns: 2
+          columns: 2,
+          algorithm: 'chronological'
         });
       });
 

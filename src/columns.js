@@ -1,15 +1,27 @@
 import Chronological from './partition/chronological';
+import Greedy from './partition/greedy';
 
 export default class Columns {
+  static algorithms = {
+    greedy: Greedy,
+    chronological: Chronological
+  };
+
   constructor(container, options = {}) {
     this.container = container;
     this.options = Object.assign({
       columns: 1,
       breakpoints: null,
-      column_class: 'column-js'
+      column_class: 'column-js',
+      algorithm: 'greedy'
     }, options);
 
-    this.algorithm = new Chronological(Array.from(this.container.children) || []);
+    const algorithmClass = this.constructor.algorithms[this.options.algorithm];
+    if (typeof algorithmClass === 'undefined') {
+      throw new Error('Unsupported partitioning algorithm');
+    }
+
+    this.algorithm = new algorithmClass(Array.from(this.container.children) || []);
 
     this.render();
   }

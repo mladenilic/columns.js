@@ -37,7 +37,8 @@ describe('Columns', function () {
 
       this.columns = new Columns(this.container, {
         columns: 3,
-        column_class: 'test-class'
+        column_class: 'test-class',
+        algorithm: 'chronological'
       });
     });
 
