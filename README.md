@@ -19,7 +19,7 @@ A minimalist masonry layout is written in vanilla JS, with **no** dependencies.
 * Written as ES6 module, no dependencies
 * No inline styles, no absolute positioning, no transforms
 * Responsive support, minimal configuration
-* Maintains chronological order
+* Multiple partitioning algorithms
 
 ### Dependencies
 
@@ -39,12 +39,12 @@ yarn add columns.js
 
 ### Example
 
-Following example demonstrates creating masonry grid with 3 columns: 
+Following example demonstrates creating a masonry grid with 3 columns:
 ```js
 import Columns from 'columns.js';
 
 let grid = new Columns(document.getElementById('columns'), {
-    columns: 3
+  columns: 3
 });
 ```
 
@@ -84,28 +84,49 @@ new Columns(document.getElementById('columns'), {
   * > 840px             -> 4 columns
   */
   breakpoints: {
-      480: 3,
-      840: 4
+    480: 3,
+    840: 4
   },
 
  /**
   * Html class added to grid column elements (Optional)
   */
-  column_class: 'column-js'
+  column_class: 'column-js',
+  
+ /**
+  * Choose algorithm used for partitioning elements into columns (Optional)
+  * 
+  * 'greedy' (default) or 'chronological'
+  */
+  algorithm: 'greedy'
 });
 
 ```
 
+### Partitioning
+
+This section provides information on algorithms implemented by *columns.js* for partitioning elements into columns.
+
+It currently supports two algorithms – `greedy` and `chronological`
+
+#### [Greedy algorithm](https://en.wikipedia.org/wiki/Partition_problem#The_greedy_algorithm) - `greedy` (default) 
+The algorithm iterates through the elements in descending order, assigning each of them to whichever column has the smaller total height.
+
+This approach reduces the difference between column heights while sacrificing the chronological order of items.  
+
+As an improvement, *column.js* implementation preserves chronological order of items within one column. 
+
+#### Chronological algorithm - `chronological`
+The algorithm iterates through the elements, assigning them to columns in chronological order.
+
+There is no optimization of column heights.
+
 ### Methods
 ```js
-grid.columnCount(); // Get current number of columns
+grid.count(); // Get current number of columns
 grid.append(element); // Append new html element
-grid.update(); // Re-flow the grid
-
-// Option setters
-grid.setBreakpoints(breakpoints)
-grid.setColumns(columns)
-grid.setColumnClass(columnClass)
+grid.render(); // Re-flow the grid
+grid.setOptions(options)
 ```
 
 ### Styling
@@ -114,9 +135,9 @@ grid.setColumnClass(columnClass)
 Instead, *columns.js* maintains `columns` data attribute on the wrapper element with a current column count value, which can be used for styling:
 
 ```css
-#columns {
-    display: flex;
-    flex-wrap: wrap;
+[data-columns] {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 [data-columns="3"] > * {
@@ -131,26 +152,24 @@ Instead, *columns.js* maintains `columns` data attribute on the wrapper element 
 Here's a handy mixin:
 ```scss
 @mixin columnsjs {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 
-    @for $i from 1 through 9 {
-        &[data-columns="#{$i}"] {
+  @for $i from 1 through 9 {
+    &[data-columns="#{$i}"] {
 
-            & > * {
-                flex-basis: calc(100% / #{$i});
-            }
-        }
+      & > * {
+        flex-basis: calc(100% / #{$i});
+      }
     }
+  }
 }
 
 #columns {
-    @include columnsjs;
+  @include columnsjs;
 }
 ```
 
 ### To Do
-
-1. Implement column height optimization – currently *columns.js* prioritizes chronological orders, which can lead to the uneven height of grid columns, when item height varies too much.
-2. Implement removing an element from the grid
-3. Add event system
+1. Removing an element from the grid
+2. Event system
