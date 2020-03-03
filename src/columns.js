@@ -1,5 +1,5 @@
-import Chronological from './partition/chronological';
-import Greedy from './partition/greedy';
+import Chronological from './partition/chronological.js';
+import Greedy from './partition/greedy.js';
 
 export default class Columns {
   static algorithms = {

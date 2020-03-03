@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const Columns = require('../src/columns').default;
+const Columns = require('../../src/columns').default;
 
 describe('Columns', function () {
   describe('default options', function () {
