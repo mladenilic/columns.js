@@ -12,6 +12,18 @@ export default class Item {
   }
 
   /**
+   * Construct array of items
+   *
+   * @param {*[]} items
+   * @param {function} extractor
+
+   * @return {Item[]}
+   */
+  static from(items = [], extractor = i => i) {
+    return items.map(i => new this(i, extractor));
+  }
+
+  /**
    * Extract set item value used for partitioning
    *
    * @return {number}
