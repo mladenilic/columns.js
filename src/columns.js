@@ -1,11 +1,6 @@
-import Chronological from './partition/chronological.js';
-import Greedy from './partition/greedy.js';
+import Set from './partition/set.js';
 
 export default class Columns {
-  static algorithms = {
-    greedy: Greedy,
-    chronological: Chronological
-  };
 
   constructor(container, options = {}) {
     this.container = container;
@@ -16,12 +11,10 @@ export default class Columns {
       algorithm: 'greedy'
     }, options);
 
-    const algorithmClass = this.constructor.algorithms[this.options.algorithm];
-    if (typeof algorithmClass === 'undefined') {
-      throw new Error('Unsupported partitioning algorithm');
-    }
-
-    this.algorithm = new algorithmClass(Array.from(this.container.children) || []);
+    this.set = new Set(Array.from(this.container.children) || [], {
+      algorithm: this.options.algorithm,
+      extractor: i => i.getBoundingClientRect().height
+    });
 
     this.render();
   }
@@ -42,7 +35,7 @@ export default class Columns {
   }
 
   append(element) {
-    const column = this.algorithm.append(element);
+    const column = this.set.append(element);
     this.container.children[column].append(element);
 
     return this;
@@ -52,7 +45,7 @@ export default class Columns {
     const count = this.count();
     const columns = this._prepareColumns(count);
 
-    this.algorithm.partition(count).forEach((c, i) => columns[i].append(...c));
+    this.set.partition(count).forEach((c, i) => columns[i].append(...c.lean()));
 
     this.container.dataset.columns = count;
     while (this.container.firstChild) {
