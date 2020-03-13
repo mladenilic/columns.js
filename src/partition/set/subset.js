@@ -11,15 +11,8 @@ export default class Subset {
    */
   constructor(items = []) {
     this.items = items;
-  }
 
-  /**
-   * Returns sum of item values
-   *
-   * @return {number}
-   */
-  sum() {
-    return this.items.reduce((a, c) => a + c.value, 0);
+    this.sum = this.items.reduce((a, c) => a + c.value, 0);
   }
 
   /**
@@ -42,6 +35,7 @@ export default class Subset {
     }
 
     this.items.push(item);
+    this.sum += item.value;
 
     return this;
   }
