@@ -37,11 +37,11 @@ export default class Greedy {
    *
    * @param {Subset[]} subsets
    * @param {Item} item
-   * @return {number|null}
+   * @return {number}
    */
   static append(subsets, item) {
-    if (subsets === null) {
-      return null;
+    if (!Array.isArray(subsets) || !subsets.length) {
+      throw new Error('Cannot append without subsets');
     }
 
     const min = subsets.reduce((min, subset, index) => subsets[min].sum <= subset.sum ? min : index, 0);

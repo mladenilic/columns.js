@@ -28,11 +28,11 @@ export default class Chronological {
    *
    * @param {Subset[]} subsets
    * @param {Item} item
-   * @return {number|null}
+   * @return {number}
    */
   static append(subsets, item) {
-    if (subsets === null) {
-      return null;
+    if (!Array.isArray(subsets) || !subsets.length) {
+      throw new Error('Cannot append without subsets');
     }
 
     const count = subsets.reduce((a, c) => a + c.count(), 0);

@@ -35,8 +35,12 @@ export default class Columns {
   }
 
   append(element) {
-    const column = this.set.append(element);
-    this.container.children[column].append(element);
+    try {
+      const column = this.set.append(element);
+      this.container.children[column].append(element);
+    } catch (e) {
+      console.warn(e);
+    }
 
     return this;
   }

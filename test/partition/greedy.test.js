@@ -66,5 +66,12 @@ describe('Greedy partitioning algorithm', function () {
         [4, 2, 7, 9]
       ]);
     });
+
+    context('when subsets are empty', function () {
+      it('should throw', function () {
+        expect(() => Chronological.append(null, new Item(8))).to.throw();
+        expect(() => Chronological.append([], new Item(8))).to.throw();
+      });
+    });
   });
 });
