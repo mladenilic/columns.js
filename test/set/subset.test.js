@@ -10,7 +10,7 @@ describe('Subset', function () {
       });
 
       it('returns 0', function () {
-        expect(this.subset.sum()).to.equal(0);
+        expect(this.subset.sum).to.equal(0);
       });
     });
 
@@ -20,7 +20,7 @@ describe('Subset', function () {
       });
 
       it('returns correct sum', function () {
-        expect(this.subset.sum()).to.equal(10);
+        expect(this.subset.sum).to.equal(10);
       });
     });
   });
