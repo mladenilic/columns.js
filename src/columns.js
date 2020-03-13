@@ -35,12 +35,12 @@ export default class Columns {
   }
 
   append(element) {
-    try {
-      const column = this.set.append(element);
-      this.container.children[column].append(element);
-    } catch (e) {
-      console.warn(e);
-    }
+    // Temporary append element to the first column
+    // to be able to calculate height
+    this.container.children[0].append(element);
+
+    const column = this.set.append(element);
+    this.container.children[column].append(element);
 
     return this;
   }
