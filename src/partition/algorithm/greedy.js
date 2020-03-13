@@ -13,12 +13,18 @@ export default class Greedy {
    */
   static partition(items, count) {
     const subsets = [...Array(count)].map(_ => new Subset());
+    const sums = [...Array(count)].map(_ => 0);
 
     if (count > 0) {
       [...items].sort((a, b) => b.value - a.value)
-        .forEach((item, index) => item._column = index % count);
+        .forEach((item) => {
+          const min = sums.reduce((min, sum, index) => sums[min] <= sum ? min : index, 0);
 
-      items.forEach(item => subsets[item._column].append(item));
+          sums[min] += item.value;
+          item._subset = min;
+        });
+
+      items.forEach(item => subsets[item._subset].append(item));
     }
 
     return subsets;
@@ -38,14 +44,9 @@ export default class Greedy {
       return null;
     }
 
-    const min = subsets.reduce((min, c, index) => {
-      const sum = c.sum();
+    const min = subsets.reduce((min, subset, index) => subsets[min].sum <= subset.sum ? min : index, 0);
+    subsets[min].append(item);
 
-      return min.sum < sum ? min : { index, sum };
-    }, { index: 0, sum: subsets[0].sum() });
-
-    subsets[min.index].append(item);
-
-    return min.index;
+    return min;
   }
 }
