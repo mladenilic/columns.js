@@ -19,9 +19,14 @@ export default class Greedy {
       return null;
     }
 
-    // TODO: Implement greedy appending
-    subsets[0].append(item);
+    const min = subsets.reduce((min, c, index) => {
+      const sum = c.sum();
 
-    return 0;
+      return min.sum < sum ? min : { index, sum };
+    }, { index: 0, sum: subsets[0].sum() });
+
+    subsets[min.index].append(item);
+
+    return min.index;
   }
 }

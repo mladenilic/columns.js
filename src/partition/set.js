@@ -25,7 +25,7 @@ export default class Set {
     }
 
     this.algorithm = AlgorithmClass;
-    this.subsets = null;
+    this.subsets = [];
   }
 
   /**
