@@ -1,6 +1,16 @@
 import Subset from '../set/subset.js';
 
 export default class Chronological {
+
+  /**
+   * Partition items into subsets
+   *
+   * @static
+   *
+   * @param {Item[]} items
+   * @param {number} count
+   * @return {Subset[]}
+   */
   static partition(items, count) {
     const subsets = [...Array(count)].map(_ => new Subset());
 
@@ -11,6 +21,15 @@ export default class Chronological {
     return subsets;
   }
 
+  /**
+   * Append item to one of the subsets
+   *
+   * @static
+   *
+   * @param {Subset[]} subsets
+   * @param {Item} item
+   * @return {number|null}
+   */
   static append(subsets, item) {
     if (subsets === null) {
       return null;
