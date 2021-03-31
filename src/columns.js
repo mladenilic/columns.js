@@ -1,15 +1,16 @@
 import Set from './partition/set.js';
 
 export default class Columns {
-
   constructor(container, options = {}) {
     this.container = container;
-    this.options = Object.assign({
+
+    this.options = {
       columns: 1,
       breakpoints: null,
       column_class: 'column-js',
-      algorithm: 'greedy'
-    }, options);
+      algorithm: 'greedy',
+      ...options
+    };
 
     this.set = new Set(Array.from(this.container.children) || [], {
       algorithm: this.options.algorithm,
@@ -61,7 +62,7 @@ export default class Columns {
   }
 
   setOptions(options = {}) {
-    this.options = Object.assign(this.options, options);
+    this.options = { ...this.options, ...options };
   }
 
   _prepareColumns(count) {
