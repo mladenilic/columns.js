@@ -31,7 +31,7 @@ No dependencies! Written in plain javascript.
 $ npm install columns.js
 ```
 
-or 
+or
 
 ```
 yarn add columns.js
@@ -74,10 +74,10 @@ new Columns(document.getElementById('columns'), {
 
  /**
   * Responsive settings (Optional)
-  * 
+  *
   * Each key represents a screen size and each value
   * is corresponding number of columns
-  * 
+  *
   * Example:
   * < 480px             -> 1 column
   * > 480px and < 839px -> 3 columns
@@ -92,10 +92,10 @@ new Columns(document.getElementById('columns'), {
   * Html class added to grid column elements (Optional)
   */
   column_class: 'column-js',
-  
+
  /**
   * Choose algorithm used for partitioning elements into columns (Optional)
-  * 
+  *
   * 'greedy' (default) or 'chronological'
   */
   algorithm: 'greedy'
@@ -109,12 +109,12 @@ This section provides information on algorithms implemented by *columns.js* for 
 
 It currently supports two algorithms – `greedy` and `chronological`
 
-#### [Greedy algorithm](https://en.wikipedia.org/wiki/Partition_problem#The_greedy_algorithm) - `greedy` (default) 
+#### [Greedy algorithm](https://en.wikipedia.org/wiki/Partition_problem#The_greedy_algorithm) - `greedy` (default)
 The algorithm iterates through the elements in descending order, assigning each of them to whichever column has the smaller total height.
 
-This approach reduces the difference between column heights while sacrificing the chronological order of items.  
+This approach reduces the difference between column heights while sacrificing the chronological order of items.
 
-As an improvement, *column.js* implementation preserves chronological order of items within one column. 
+As an improvement, *column.js* implementation preserves chronological order of items within one column.
 
 #### Chronological algorithm - `chronological`
 The algorithm iterates through the elements, assigning them to columns in chronological order.
@@ -169,6 +169,15 @@ Here's a handy mixin:
   @include columnsjs;
 }
 ```
+
+### IE Support
+*columns.js* relies on modern ES6 features, some of which are not supported by IE. Polyfills for following methods are needed:
+- NodeList.prototype.forEach
+- Array.from
+- Object.entries
+- Element.prototype.append
+
+Thanks [@hybridvision](https://github.com/hybridvision) for composing the list. :)
 
 ### To Do
 1. Removing an element from the grid
